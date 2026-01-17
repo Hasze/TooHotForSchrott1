@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TooHotforSchrott - Kleiderspenden-Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo-area">
+                <img src="https://github.com/Hasze/Portal-fuer-Kleiderspende/raw/refs/heads/main/Logo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">TooHotforSchrott</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('portal')">Portal</a></li>
+                    <li><a href="#" onclick="showPage('crisis')">Krisengebiete</a></li>
+                    <li><a href="#" onclick="showPage('about')">Über uns</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section id="portal-page">
+            <div class="card form-card">
+                <div class="card-header">
+                    <h1>Kleiderspende registrieren</h1>
+                </div>
+                <form id="donationForm" class="p-20">
+                    <div class="form-group">
+                        <label>Wie erfolgt die Spende?</label>
+                        <div class="radio-group">
+                            <input type="radio" name="type" id="type-office" value="office" checked onchange="handleTypeChange()">
+                            <label for="type-office">Geschäftsstelle</label>
+                            
+                            <input type="radio" name="type" id="type-pickup" value="pickup" onchange="handleTypeChange()">
+                            <label for="type-pickup">Abholung</label>
+                        </div>
+                    </div>
+
+                    <div id="addressBox" class="hidden box-light">
+                        <label>Abholadresse (Bereich Berlin/12...)</label>
+                        <input type="text" id="street" placeholder="Straße & Hausnummer">
+                        <input type="text" id="plz" placeholder="Postleitzahl">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Was spenden Sie?</label>
+                            <input type="text" id="clothes" placeholder="z.B. 2 Sack Winterkleidung">
+                        </div>
+                        <div class="form-group">
+                            <label>Krisenregion</label>
+                            <select id="crisis-select">
+                                <option value="Deutschland, Berlin">Deutschland, Berlin</option>
+                                <option value="Kosovo">Kosovo</option>
+                                <option value="Nordsyrien">Nordsyrien</option>
+                                <option value="Süd-Sudan">Süd-Sudan</option>
+                                <option value="Ukraine">Ukraine</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-primary" onclick="processRegistration()">Registrierung abschließen</button>
+                </form>
+            </div>
+
+            <div id="success-card" class="card hidden success-card">
+                <h2>Vielen Dank!</h2>
+                <p>Ihre Registrierung war erfolgreich.</p>
+                <div id="result-details" class="box-light"></div>
+                <button onclick="location.reload()" class="btn-link">Neue Registrierung</button>
+            </div>
+        </section>
+
+        <section id="crisis-page" class="hidden">
+            <h2 class="text-center">Aktuelle Einsatzgebiete</h2>
+            <div class="grid-3">
+                <article class="crisis-item">
+                    <img src="https://github.com/Hasze/TooHotforSchrott/raw/refs/heads/main/berlin.png" alt="Berlin">
+                    <h3>Berlin</h3>
+                    <p>Hilfe bei Stromausfall.</p>
+                </article>
+                <article class="crisis-item">
+                    <img src="https://github.com/Hasze/TooHotforSchrott/raw/refs/heads/main/kosovo.png" alt="Kosovo">
+                    <h3>Kosovo</h3>
+                    <p>Überschwemmungshilfe.</p>
+                </article>
+                <article class="crisis-item">
+                    <img src="https://github.com/Hasze/TooHotforSchrott/raw/refs/heads/main/syrien.png" alt="Syrien">
+                    <h3>Nordsyrien</h3>
+                    <p>Erdbebenhilfe.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="about-page" class="hidden">
+            <div class="card about-card">
+                <img src="https://github.com/Hasze/Portal-fuer-Kleiderspende/raw/refs/heads/main/Logo.png" alt="Logo" class="about-logo">
+                <h2>Unsere Mission</h2>
+                <p>Wir bringen Ihre Spenden dorthin, wo sie gebraucht werden.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <strong>Firmensitz</strong><br>
+                Hilfsstraße 123, 12045 Berlin
+            </div>
+            <div>
+                <strong>Kontakt</strong><br>
+                hilfe@toohotforschrott.de
+            </div>
+            <div>
+                <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
