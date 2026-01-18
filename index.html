@@ -241,9 +241,14 @@ function handleTypeChange() {
     document.getElementById('form-card').classList.add('hidden');
     document.getElementById('success-card').classList.remove('hidden');
 
-    const now = new Date();
-    const locationText = typeValue === 'office' ? 'Geschäftsstelle' : 'Abholung (' + plz + ')';
+   var now = new Date();
+var locationText = "";
 
+if (typeValue === 'office') {
+    locationText = 'Geschäftsstelle';
+} else {
+    locationText = 'Abholung (PLZ: ' + plz + ')';
+}
     // KLASSISCHE SCHREIBWEISE (Sieht viel mehr nach Studentenausarbeitung aus):
     document.getElementById('result-details').innerHTML = 
         '<p><strong>Art der Kleider:</strong> ' + clothes + '</p>' +
@@ -254,6 +259,7 @@ function handleTypeChange() {
     </script>
 </body>
 </html>
+
 
 
 
