@@ -219,33 +219,34 @@
             document.getElementById('label-office').classList.toggle('bg-emerald-50', !isPickup);
         }
 
-        function processRegistration() {
-            const typeValue = document.querySelector('input[name="type"]:checked').value;
-            const clothes = document.getElementById('clothes').value;
-            const crisis = document.getElementById('crisis-select').value;
-            const plz = document.getElementById('plz').value;
+     function processRegistration() {
+    const typeValue = document.querySelector('input[name="type"]:checked').value;
+    const clothes = document.getElementById('clothes').value;
+    const crisis = document.getElementById('crisis-select').value;
+    const plz = document.getElementById('plz').value;
 
-            if(!clothes) { alert("Bitte geben Sie die Art der Kleidung an."); return; }
+    if(!clothes) { alert("Bitte geben Sie die Art der Kleidung an."); return; }
 
-            if (typeValue === 'pickup' && !plz.startsWith("12")) {
-                alert("Abholung nicht möglich: Die PLZ muss mit 12 beginnen, da wir aus wirtschaftlichen Gründen nur aus Berlin Kleidung abholen können.");
-                return;
-            }
+    if (typeValue === 'pickup' && !plz.startsWith("12")) {
+        alert("Abholung nicht möglich: Die PLZ muss mit 12 beginnen.");
+        return;
+    }
 
-            document.getElementById('form-card').classList.add('hidden');
-            document.getElementById('success-card').classList.remove('hidden');
+    document.getElementById('form-card').classList.add('hidden');
+    document.getElementById('success-card').classList.remove('hidden');
 
-            const now = new Date();
-            const locationText = typeValue === 'office' ? 'Geschäftsstelle' : 'Abholung (' + plz + ')';
+    const now = new Date();
+    const locationText = typeValue === 'office' ? 'Geschäftsstelle' : 'Abholung (' + plz + ')';
 
-            document.getElementById('result-details').innerHTML = `
-                <p><strong>Art der Kleider:</strong> ${clothes}</p>
-                <p><strong>Ziel-Region:</strong> ${crisis}</p>
-                <p><strong>Ort:</strong> ${locationText}</p>
-                <p><strong>Datum:</strong> ${now.toLocaleDateString('de-DE')}</p>
-            `;
-        }
+    // KLASSISCHE SCHREIBWEISE (Sieht viel mehr nach Studentenausarbeitung aus):
+    document.getElementById('result-details').innerHTML = 
+        '<p><strong>Art der Kleider:</strong> ' + clothes + '</p>' +
+        '<p><strong>Ziel-Region:</strong> ' + crisis + '</p>' +
+        '<p><strong>Ort:</strong> ' + locationText + '</p>' +
+        '<p><strong>Datum:</strong> ' + now.toLocaleDateString('de-DE') + '</p>';
+}
     </script>
 </body>
 </html>
+
 
