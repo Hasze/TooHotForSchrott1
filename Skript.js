@@ -1,21 +1,30 @@
 /**
- * Navigation zwischen den Seiten
+ * Seitenwechsel-Logik (SPA-Funktionalität)
  */
 function showPage(pageId) {
-    // Alle Seiten verstecken
-    document.getElementById('portal-page').classList.add('hidden');
-    document.getElementById('crisis-page').classList.add('hidden');
-    document.getElementById('about-page').classList.add('hidden');
+    // Liste aller Sektionen
+    const sections = ['portal-page', 'crisis-page', 'about-page'];
     
+    sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.classList.add('hidden');
+        }
+    });
+
     // Gewünschte Seite anzeigen
-    document.getElementById(pageId + '-page').classList.remove('hidden');
+    const target = document.getElementById(pageId + '-page');
+    if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo(0,0);
+    }
 }
 
 /**
- * Zeigt/Versteckt Adressfeld basierend auf Radio-Button
+ * Steuert die Anzeige der Adresseingabe
  */
 function handleTypeChange() {
-    const isPickup = document.getElementById('type-pickup').checked;
+    const isPickup = document.getElementById('pickup').checked;
     const addressBox = document.getElementById('addressBox');
     
     if (isPickup) {
@@ -26,41 +35,44 @@ function handleTypeChange() {
 }
 
 /**
- * Validierung und Verarbeitung (Anforderung h & i)
+ * Hauptlogik der Registrierung
  */
 function processRegistration() {
-    const type = document.querySelector('input[name="type"]:checked').value;
+    // Werte auslesen
+    const typeValue = document.querySelector('input[name="type"]:checked').value;
     const clothes = document.getElementById('clothes').value;
     const crisis = document.getElementById('crisis-select').value;
     const plz = document.getElementById('plz').value;
-    const officePrefix = "12"; // Vorgabe
+    const officePrefix = "12";
 
-    // 1. Pflichtfeldprüfung
+    // Validierung
     if (!clothes) {
-        alert("Bitte geben Sie an, was Sie spenden möchten.");
+        alert("Bitte geben Sie die Art der Kleidung an.");
         return;
     }
 
-    // 2. PLZ Logik für Abholung (Anforderung h)
-    if (type === 'pickup') {
+    if (typeValue === 'pickup') {
         if (!plz.startsWith(officePrefix)) {
-            alert("Abholung leider nicht möglich. Die PLZ muss mit " + officePrefix + " beginnen.");
+            alert("Abholung nicht möglich: Unser Service ist aktuell nur für PLZ-Bereiche beginnend mit " + officePrefix + " verfügbar.");
             return;
         }
     }
 
-    // 3. Erfolg anzeigen (Anforderung i)
-    document.getElementById('form-card').classList.add('hidden');
+    // UI-Wechsel
+    document.getElementById('donationForm').parentElement.classList.add('hidden');
     document.getElementById('success-card').classList.remove('hidden');
 
+    // Bestätigungsdaten generieren
     const now = new Date();
-    const ort = (type === 'office') ? "Geschäftsstelle Berlin" : "Abholung von: " + plz;
+    const ort = (typeValue === 'office') ? "Geschäftsstelle Berlin" : "Abholung (PLZ " + plz + ")";
 
     document.getElementById('result-details').innerHTML = `
-        <p><strong>Kleidung:</strong> ${clothes}</p>
-        <p><strong>Region:</strong> ${crisis}</p>
-        <p><strong>Ort:</strong> ${ort}</p>
-        <p><strong>Datum:</strong> ${now.toLocaleDateString('de-DE')}</p>
-        <p><strong>Zeit:</strong> ${now.toLocaleTimeString('de-DE', {hour: '2-digit', minute:'2-digit'})} Uhr</p>
+        <div style="line-height: 2;">
+            <p><strong>Spendenart:</strong> ${clothes}</p>
+            <p><strong>Zielgebiet:</strong> ${crisis}</p>
+            <p><strong>Übergabeort:</strong> ${ort}</p>
+            <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 0;">
+            <p><strong>Registriert am:</strong> ${now.toLocaleDateString('de-DE')} um ${now.toLocaleTimeString('de-DE', {hour: '2-digit', minute:'2-digit'})} Uhr</p>
+        </div>
     `;
 }
