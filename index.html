@@ -209,16 +209,22 @@
             window.scrollTo(0,0);
         }
 
-        function handleTypeChange() {
-            const isPickup = document.querySelector('input[name="type"]:checked').value === 'pickup';
-            document.getElementById('addressBox').classList.toggle('hidden', !isPickup);
-            
-            document.getElementById('label-pickup').classList.toggle('border-emerald-500', isPickup);
-            document.getElementById('label-pickup').classList.toggle('bg-emerald-50', isPickup);
-            document.getElementById('label-office').classList.toggle('border-emerald-500', !isPickup);
-            document.getElementById('label-office').classList.toggle('bg-emerald-50', !isPickup);
-        }
+function handleTypeChange() {
+    var isPickup = document.querySelector('input[name="type"]:checked').value === 'pickup';
+    var addressBox = document.getElementById('addressBox');
+    var labelPickup = document.getElementById('label-pickup');
+    var labelOffice = document.getElementById('label-office');
 
+    if (isPickup) {
+        addressBox.classList.remove('hidden');
+        labelPickup.classList.add('border-emerald-500', 'bg-emerald-50');
+        labelOffice.classList.remove('border-emerald-500', 'bg-emerald-50');
+    } else {
+        addressBox.classList.add('hidden');
+        labelPickup.classList.remove('border-emerald-500', 'bg-emerald-50');
+        labelOffice.classList.add('border-emerald-500', 'bg-emerald-50');
+    }
+}
      function processRegistration() {
     const typeValue = document.querySelector('input[name="type"]:checked').value;
     const clothes = document.getElementById('clothes').value;
@@ -248,5 +254,6 @@
     </script>
 </body>
 </html>
+
 
 
