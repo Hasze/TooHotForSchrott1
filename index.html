@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TooHotforSchrott - Kleiderspenden-Portal</title>
+    <title>TooHotforSchrott | Kleiderspenden-Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <div class="container header-flex">
-            <div class="logo-area">
-                <img src="https://github.com/Hasze/Portal-fuer-Kleiderspende/raw/refs/heads/main/Logo.png" alt="Logo" class="main-logo">
-                <span class="brand-name">TooHotforSchrott</span>
+        <div class="container header-content">
+            <div class="brand">
+                <img src="https://github.com/Hasze/Portal-fuer-Kleiderspende/raw/refs/heads/main/Logo.png" alt="Logo" class="nav-logo">
+                <span class="brand-text">TooHotforSchrott</span>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" onclick="showPage('portal')">Portal</a></li>
-                    <li><a href="#" onclick="showPage('crisis')">Krisengebiete</a></li>
-                    <li><a href="#" onclick="showPage('about')">Über uns</a></li>
+                    <li><button type="button" class="nav-link" onclick="showPage('portal')">Portal</button></li>
+                    <li><button type="button" class="nav-link" onclick="showPage('crisis')">Krisengebiete</button></li>
+                    <li><button type="button" class="nav-link" onclick="showPage('about')">Über uns</button></li>
                 </ul>
             </nav>
         </div>
@@ -26,102 +26,118 @@
 
     <main class="container">
         
-        <section id="portal-page">
-            <div class="card form-card">
+        <section id="portal-page" class="page-section">
+            <div class="card">
                 <div class="card-header">
                     <h1>Kleiderspende registrieren</h1>
+                    <p>Wählen Sie Ihre bevorzugte Spendenart</p>
                 </div>
-                <form id="donationForm" class="p-20">
+                
+                <form id="donationForm" class="card-body">
                     <div class="form-group">
-                        <label>Wie erfolgt die Spende?</label>
-                        <div class="radio-group">
-                            <input type="radio" name="type" id="type-office" value="office" checked onchange="handleTypeChange()">
-                            <label for="type-office">Geschäftsstelle</label>
+                        <label class="main-label">Spenden-Modus</label>
+                        <div class="toggle-container">
+                            <input type="radio" name="type" id="office" value="office" checked onchange="handleTypeChange()">
+                            <label for="office" class="toggle-label">Geschäftsstelle</label>
                             
-                            <input type="radio" name="type" id="type-pickup" value="pickup" onchange="handleTypeChange()">
-                            <label for="type-pickup">Abholung</label>
+                            <input type="radio" name="type" id="pickup" value="pickup" onchange="handleTypeChange()">
+                            <label for="pickup" class="toggle-label">Abholung</label>
                         </div>
                     </div>
 
-                    <div id="addressBox" class="hidden box-light">
-                        <label>Abholadresse (Bereich Berlin/12...)</label>
-                        <input type="text" id="street" placeholder="Straße & Hausnummer">
-                        <input type="text" id="plz" placeholder="Postleitzahl">
-                    </div>
-
-                    <div class="form-row">
+                    <div id="addressBox" class="address-box hidden">
+                        <h3>Abholadresse</h3>
                         <div class="form-group">
-                            <label>Was spenden Sie?</label>
-                            <input type="text" id="clothes" placeholder="z.B. 2 Sack Winterkleidung">
+                            <input type="text" id="street" placeholder="Straße & Hausnummer">
                         </div>
                         <div class="form-group">
-                            <label>Krisenregion</label>
+                            <input type="text" id="plz" placeholder="Postleitzahl (z.B. 12345)">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="clothes">Was spenden Sie?</label>
+                            <input type="text" id="clothes" placeholder="z.B. 2 Sack Winterkleidung" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="crisis-select">Krisengebiet</label>
                             <select id="crisis-select">
-                                <option value="Deutschland, Berlin">Deutschland, Berlin</option>
-                                <option value="Kosovo">Kosovo</option>
-                                <option value="Nordsyrien">Nordsyrien</option>
-                                <option value="Süd-Sudan">Süd-Sudan</option>
-                                <option value="Ukraine">Ukraine</option>
+                                <option>Deutschland, Berlin (Stromausfallhilfe)</option>
+                                <option>Kosovo (Überschwemmungshilfe)</option>
+                                <option>Nordsyrien (Erdbebenhilfe)</option>
+                                <option>Süd-Sudan (Dürrehilfe)</option>
+                                <option>Ukraine (Kältehilfe)</option>
                             </select>
                         </div>
                     </div>
 
-                    <button type="button" class="btn-primary" onclick="processRegistration()">Registrierung abschließen</button>
+                    <button type="button" class="btn-submit" onclick="processRegistration()">Registrierung absenden</button>
                 </form>
             </div>
 
-            <div id="success-card" class="card hidden success-card">
-                <h2>Vielen Dank!</h2>
-                <p>Ihre Registrierung war erfolgreich.</p>
-                <div id="result-details" class="box-light"></div>
-                <button onclick="location.reload()" class="btn-link">Neue Registrierung</button>
+            <div id="success-card" class="card success-view hidden">
+                <div class="success-icon">✓</div>
+                <h2>Registrierung erfolgreich!</h2>
+                <div id="result-details" class="details-box"></div>
+                <button type="button" class="btn-secondary" onclick="location.reload()">Neue Spende registrieren</button>
             </div>
         </section>
 
-        <section id="crisis-page" class="hidden">
-            <h2 class="text-center">Aktuelle Einsatzgebiete</h2>
-            <div class="grid-3">
-                <article class="crisis-item">
+        <section id="crisis-page" class="page-section hidden">
+            <h2 class="section-title">Aktuelle Einsatzgebiete</h2>
+            <div class="grid-container">
+                <article class="crisis-card">
                     <img src="https://github.com/Hasze/TooHotforSchrott/raw/refs/heads/main/berlin.png" alt="Berlin">
-                    <h3>Berlin</h3>
-                    <p>Hilfe bei Stromausfall.</p>
+                    <div class="p-15">
+                        <h3>Berlin</h3>
+                        <p>Unterstützung lokaler Wärmestuben.</p>
+                    </div>
                 </article>
-                <article class="crisis-item">
+                <article class="crisis-card">
                     <img src="https://github.com/Hasze/TooHotforSchrott/raw/refs/heads/main/kosovo.png" alt="Kosovo">
-                    <h3>Kosovo</h3>
-                    <p>Überschwemmungshilfe.</p>
+                    <div class="p-15">
+                        <h3>Kosovo</h3>
+                        <p>Hilfe nach Sturzfluten.</p>
+                    </div>
                 </article>
-                <article class="crisis-item">
+                <article class="crisis-card">
                     <img src="https://github.com/Hasze/TooHotforSchrott/raw/refs/heads/main/syrien.png" alt="Syrien">
-                    <h3>Nordsyrien</h3>
-                    <p>Erdbebenhilfe.</p>
+                    <div class="p-15">
+                        <h3>Nordsyrien</h3>
+                        <p>Versorgung nach dem Erdbeben.</p>
+                    </div>
                 </article>
             </div>
         </section>
 
-        <section id="about-page" class="hidden">
-            <div class="card about-card">
+        <section id="about-page" class="page-section hidden">
+            <div class="card about-content">
                 <img src="https://github.com/Hasze/Portal-fuer-Kleiderspende/raw/refs/heads/main/Logo.png" alt="Logo" class="about-logo">
-                <h2>Unsere Mission</h2>
-                <p>Wir bringen Ihre Spenden dorthin, wo sie gebraucht werden.</p>
+                <h2>TooHotforSchrott e.V.</h2>
+                <p>Wir sind die logistische Brücke zwischen Ihrer Spende und den Brennpunkten dieser Welt.</p>
             </div>
         </section>
 
     </main>
 
     <footer>
-        <div class="container footer-grid">
-            <div>
-                <strong>Firmensitz</strong><br>
-                Hilfsstraße 123, 12045 Berlin
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h4>Firmensitz</h4>
+                <p>Hilfsstraße 123<br>12045 Berlin</p>
             </div>
-            <div>
-                <strong>Kontakt</strong><br>
-                hilfe@toohotforschrott.de
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p>hilfe@toohotforschrott.de<br>+49 30 123456</p>
             </div>
-            <div>
-                <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
+            <div class="footer-col">
+                <h4>Rechtliches</h4>
+                <p><a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
             </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 TooHotforSchrott e.V. – Gemeinsam Erfolgreich.
         </div>
     </footer>
 
