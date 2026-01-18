@@ -226,10 +226,10 @@ function handleTypeChange() {
     }
 }
      function processRegistration() {
-    const typeValue = document.querySelector('input[name="type"]:checked').value;
-    const clothes = document.getElementById('clothes').value;
-    const crisis = document.getElementById('crisis-select').value;
-    const plz = document.getElementById('plz').value;
+    var typeValue = document.querySelector('input[name="type"]:checked').value;
+    var clothes = document.getElementById('clothes').value;
+    var crisis = document.getElementById('crisis-select').value;
+    var plz = document.getElementById('plz').value;
 
     if(!clothes) { alert("Bitte geben Sie die Art der Kleidung an."); return; }
 
@@ -259,6 +259,7 @@ if (typeValue === 'office') {
     </script>
 </body>
 </html>
+
 
 
 
