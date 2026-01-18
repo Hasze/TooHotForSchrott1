@@ -1,96 +1,47 @@
-/* Grund-Layout & Farben */
-:root {
-    --primary-color: #065f46;
-    --accent-color: #059669;
-    --bg-color: #f9fafb;
-    --text-color: #374151;
-}
-
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Header & Navigation (Flexbox) */
+/* Ersetze den Header-Teil in deiner style.css hiermit */
 header {
-    background-color: var(--primary-color);
+    background-color: #064e3b; /* Dunkleres Grün für besseren Kontrast */
     color: white;
-    padding: 15px 0;
+    padding: 1rem 0;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .header-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.logo-area { display: flex; align-items: center; gap: 10px; }
-.main-logo { height: 50px; border-radius: 50%; background: white; padding: 2px; }
-.brand-name { font-weight: bold; font-size: 1.2rem; }
-
-nav ul { display: flex; list-style: none; gap: 20px; margin: 0; padding: 0; }
-nav a { color: white; text-decoration: none; font-weight: 500; }
-
-/* Main Content & Cards */
-main { flex-grow: 1; padding: 40px 0; }
-
-.card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-    margin-bottom: 30px;
+/* WICHTIG: Damit man die Links klicken kann */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
 }
 
-.card-header { background: var(--primary-color); color: white; padding: 20px; text-align: center; }
-.p-20 { padding: 30px; }
-.hidden { display: none; }
-
-/* Formular Elemente */
-.form-group { margin-bottom: 20px; }
-.form-row { display: flex; gap: 20px; }
-.form-row > div { flex: 1; }
-
-label { display: block; margin-bottom: 8px; font-weight: bold; }
-input, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    box-sizing: border-box; /* Wichtig laut Skript! */
+nav a {
+    color: white !important; /* Erzwingt Weiß */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background 0.3s;
 }
 
-.box-light { background: #f3f4f6; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-
-.btn-primary {
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 15px;
-    width: 100%;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
+nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* Footer (Grid) */
-footer { background: #111827; color: #9ca3af; padding: 40px 0; font-size: 0.9rem; }
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header-flex, .form-row, .footer-grid { flex-direction: column; grid-template-columns: 1fr; }
-    nav ul { margin-top: 15px; }
+/* Verhindert, dass der Content unter den Header rutscht */
+main {
+    margin-top: 20px;
 }
