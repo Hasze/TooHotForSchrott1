@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <button type="button" onclick="processRegistration()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg border-none cursor-pointer">
+                    <button type="button" onclick="spendeSichern()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg border-none cursor-pointer">
                         Registrierung abschließen
                     </button>
                 </form>
@@ -225,7 +225,7 @@ function pruefeAbholung() {
         labelOffice.classList.add('border-emerald-500', 'bg-emerald-50');
     }
 }
-     function processRegistration() {
+     function spendeSichern() {
     var typeValue = document.querySelector('input[name="type"]:checked').value;
     var clothes = document.getElementById('clothes').value;
     var crisis = document.getElementById('crisis-select').value;
@@ -259,5 +259,6 @@ if (typeValue === 'office') {
     </script>
 </body>
 </html>
+
 
 
