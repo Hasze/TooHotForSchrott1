@@ -205,6 +205,10 @@
     </footer>
 
     <script>
+
+        const OFFICE_PLZ = "12045";
+        const OFFICE_PLZ_PREFIX = OFFICE_PLZ.substring(0, 2);
+
         function seiteWechseln(pageId) {
             document.getElementById('portal-page').classList.add('hidden');
             document.getElementById('crisis-page').classList.add('hidden');
@@ -270,6 +274,7 @@ if (typeValue === 'office') {
     </script>
 </body>
 </html>
+
 
 
 
