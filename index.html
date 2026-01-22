@@ -238,6 +238,17 @@ function pruefeAbholung() {
     var clothes = document.getElementById('clothes').value;
     var crisis = document.getElementById('crisis-select').value;
     var plz = document.getElementById('plz').value;
+    var street = document.getElementById('street').value;
+
+     if (!clothes) {
+      alert("Bitte geben Sie die Art der Kleidung an.");
+      return;
+    }
+         if (typeValue === 'pickup' && !street) {
+    alert("Bitte geben Sie Straße & Hausnummer an.");
+    return;
+}
+
 
    if (typeValue === 'pickup') {
     // PLZ prüfen (5-stellig)
@@ -273,6 +284,7 @@ if (typeValue === 'office') {
     </script>
 </body>
 </html>
+
 
 
 
