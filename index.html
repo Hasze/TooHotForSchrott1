@@ -239,7 +239,7 @@ function pruefeAbholung() {
     var crisis = document.getElementById('crisis-select').value;
     var plz = document.getElementById('plz').value;
 
-    if (typeValue === 'pickup') {
+   if (typeValue === 'pickup') {
     // PLZ prüfen (5-stellig)
     if (!/^[0-9]{5}$/.test(plz)) {
         alert("Bitte geben Sie eine gültige 5-stellige Postleitzahl ein (z.B. 12045).");
@@ -252,7 +252,6 @@ function pruefeAbholung() {
         return;
     }
 }
-
     document.getElementById('form-card').classList.add('hidden');
     document.getElementById('success-card').classList.remove('hidden');
 
@@ -274,6 +273,7 @@ if (typeValue === 'office') {
     </script>
 </body>
 </html>
+
 
 
 
