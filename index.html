@@ -37,12 +37,12 @@
             <div id="form-card" class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div class="bg-emerald-600 p-6 text-white text-center">
                     <h1 class="text-2xl font-bold">Kleiderspende registrieren</h1>
-                    <p class="text-emerald-100 mt-1">Helfen Sie dort, wo es am nötigsten gebraucht wird.</p>
+                    <p class="text-emerald-100 mt-1">Helfen Sie dort, wo es nötig ist.</p>
                 </div>
                 
                 <form id="donationForm" class="p-8 space-y-6">
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Wie erfolgt die Spende?</label>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Wie möchten Sie spenden?</label>
                         <div class="grid grid-cols-2 gap-4">
                             <label class="flex items-center justify-center p-3 border-2 rounded-xl cursor-pointer hover:bg-emerald-50 transition border-emerald-500 bg-emerald-50" id="label-office">
                                 <input type="radio" name="type" value="office" class="hidden" checked onchange="pruefeAbholung()">
@@ -63,12 +63,12 @@
 
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-1">Was spenden Sie?</label>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Was wird gespendet?</label>
                             <input type="text" id="clothes" placeholder="z.B. 2 Sack Winterkleidung" class="w-full border-gray-300 rounded-lg p-2.5 border">
                         </div>
 
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-1">Krisenregion wählen</label>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Krisengebiet wählen</label>
                             <select id="crisis-select" class="w-full border-gray-300 rounded-lg p-2.5 border">
                                 <option>Deutschland, Berlin (Stromausfallhilfe)</option>
                                 <option>Kosovo (Überschwemmungshilfe)</option>
@@ -80,17 +80,17 @@
                     </div>
 
                     <button type="button" onclick="spendeSichern()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg border-none cursor-pointer">
-                        Registrierung abschließen
+                        Jetzt spenden
                     </button>
                 </form>
             </div>
 
             <div id="success-card" class="hidden max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-10 text-center border-t-8 border-emerald-500">
-                <h2 class="text-3xl font-bold text-gray-800 mb-2">Vielen Dank!</h2>
-                <p class="text-gray-500 mb-8">Ihre Registrierung wurde erfolgreich gespeichert.</p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Danke für die Spende!</h2>
+                <p class="text-gray-500 mb-8">Ihre Spende wurde erfolgreich übermittelt.</p>
                 <div id="result-details" class="bg-emerald-50 rounded-xl p-6 text-left space-y-3 border border-emerald-100"></div>
                 <button onclick="location.reload()" class="mt-8 text-emerald-600 font-semibold hover:text-emerald-800 border-none bg-transparent cursor-pointer">
-                    &larr; Neue Registrierung starten
+                    &larr; Neue Spende starten
                 </button>
             </div>
         </div>
@@ -150,9 +150,9 @@
                              class="w-40 h-40 rounded-full bg-white p-2 shadow-2xl object-contain border-4 border-emerald-500/50">
                     </div>
                     <div class="p-10 md:w-2/3">
-                        <h2 class="text-3xl font-bold text-emerald-800 mb-6">Unsere Mission: Kleidung für alle</h2>
+                        <h2 class="text-3xl font-bold text-emerald-800 mb-6">Unser Motto: Kleidung für alle</h2>
                         <p class="text-gray-600 leading-relaxed mb-4">
-                            Der Name <strong>TooHotforSchrott e.V.</strong> ist unser internes Ziel. In Krisengebieten weltweit mangelt es oft an vielem, doch was oft vergessen wird: Die Menschen dort brauchen Kleidung und Wärme.
+                            Der Name <strong>TooHotforSchrott e.V.</strong> ist unser Ziel. In Krisengebieten weltweit mangelt es oft an vielem, doch was oft vergessen wird: Die Menschen dort brauchen Kleidung und Wärme.
                         </p>
                         <p class="text-gray-600 leading-relaxed mb-6">
                             Nach dem 06. Februar 2023, als in dem Gebiet der Türkei & Syrien ein großflächiges Erdbeben viele Teile der Länder inmitten kalter Temperaturen verwüstete, haben wir uns darauf spezialisiert, die logistische Brücke zwischen Ihrem Kleiderschrank und den Brennpunkten dieser Welt zu bauen.
@@ -166,7 +166,7 @@
                     <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Oktober 2023</span>
                     <h3 class="text-xl font-bold text-gray-800 mt-2 mb-4">Wärme für Marokko</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Nach dem schweren Erdbeben in Marokko standen viele Dörfer vor dem nahenden Winter ohne Obdach da. Dank eurer Spenden konnten wir bereits im Oktober über <strong>4.000 robuste Winterjacken</strong> und 1.500 Schlafsäcke direkt in die schwer zugänglichen Regionen des Marokkos liefern.
+                        Nach dem schweren Erdbeben in Marokko standen viele Dörfer vor dem nahenden Winter zerstört da. Dank eurer Spenden konnten wir bereits im Oktober über <strong>4.000 robuste Winterjacken</strong> und 1.500 Schlafsäcke direkt in die schwer zugänglichen Regionen des Marokkos liefern.
                     </p>
                 </div>
 
@@ -293,3 +293,4 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
