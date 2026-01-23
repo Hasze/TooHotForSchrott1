@@ -234,57 +234,66 @@ function pruefeAbholung() {
     }
 }
      function spendeSichern() {
-    var typeValue = document.querySelector('input[name="type"]:checked').value;
-    var clothes = document.getElementById('clothes').value;
-    var crisis = document.getElementById('crisis-select').value;
-    var plz = document.getElementById('plz').value;
-    var street = document.getElementById('street').value;
+  const typeValue = document.querySelector('input[name="type"]:checked').value;
+  const clothes = document.getElementById('clothes').value.trim();
+  const crisis = document.getElementById('crisis-select').value;
+  const plz = document.getElementById('plz').value.trim();
+  const street = document.getElementById('street').value.trim();
 
-     if (!clothes) {
-      alert("Bitte geben Sie die Art der Kleidung an.");
+  if (!clothes) {
+    alert("Bitte geben Sie die Art der Kleidung an.");
+    return;
+  }
+
+  if (typeValue === 'pickup') {
+    if (!street) {
+      alert("Bitte geben Sie Straße & Hausnummer an.");
       return;
     }
-         if (typeValue === 'pickup' && !street) {
-    alert("Bitte geben Sie Straße & Hausnummer an.");
-    return;
-}
 
-
-   if (typeValue === 'pickup') {
-    // PLZ prüfen (5-stellig)
     if (!/^[0-9]{5}$/.test(plz)) {
-        alert("Bitte geben Sie eine gültige 5-stellige Postleitzahl ein (z.B. 12045).");
-        return;
+      alert("Bitte geben Sie eine gültige 5-stellige Postleitzahl ein (z.B. 12045).");
+      return;
     }
 
-    // Nähe prüfen: erste 2 Ziffern müssen identisch sein
     if (plz.substring(0, 2) !== OFFICE_PLZ_PREFIX) {
-        alert("Abholung nicht möglich: Die ersten beiden Ziffern der PLZ müssen mit der Geschäftsstelle übereinstimmen (" + OFFICE_PLZ_PREFIX + "xxx).");
-        return;
+      alert(
+        "Abholung nicht möglich: Die ersten beiden Ziffern der PLZ müssen mit der Geschäftsstelle übereinstimmen (" +
+        OFFICE_PLZ_PREFIX + "xxx)."
+      );
+      return;
     }
-}
-    document.getElementById('form-card').classList.add('hidden');
-    document.getElementById('success-card').classList.remove('hidden');
+  }
 
-   var now = new Date();
-var locationText = "";
+  document.getElementById('form-card').classList.add('hidden');
+  document.getElementById('success-card').classList.remove('hidden');
 
-if (typeValue === 'office') {
-    locationText = 'Geschäftsstelle';
-} else {
-    locationText = 'Abholung (PLZ: ' + plz + ')';
-}
+  const now = new Date();
 
-    document.getElementById('result-details').innerHTML = 
-        '<p><strong>Art der Kleider:</strong> ' + clothes + '</p>' +
-        '<p><strong>Ziel-Region:</strong> ' + crisis + '</p>' +
-        '<p><strong>Ort:</strong> ' + locationText + '</p>' +
-        '<p><strong>Datum:</strong> ' + dateText + '</p>' +
-        '<p><strong>Uhrzeit:</strong> ' + timeText + ' Uhr</p>';
+  let locationText = "";
+  if (typeValue === 'office') {
+    locationText = "Geschäftsstelle (Hilfsstraße 67, 12045 Berlin)";
+  } else {
+    locationText = "Abholung: " + street + ", " + plz;
+  }
+
+  const dateText = now.toLocaleDateString('de-DE');
+  const timeText = now.toLocaleTimeString('de-DE', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  document.getElementById('result-details').innerHTML =
+    '<p><strong>Art der Kleider:</strong> ' + clothes + '</p>' +
+    '<p><strong>Ziel-Region:</strong> ' + crisis + '</p>' +
+    '<p><strong>Ort:</strong> ' + locationText + '</p>' +
+    '<p><strong>Datum:</strong> ' + dateText + '</p>' +
+    '<p><strong>Uhrzeit:</strong> ' + timeText + ' Uhr</p>';
 }
     </script>
 </body>
 </html>
+
 
 
 
