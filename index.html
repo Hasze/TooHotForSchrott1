@@ -274,7 +274,7 @@ function pruefeAbholung() {
   if (spendenart === 'geschaeftsstelle') {
     locationText = "Geschäftsstelle (Hilfsstraße 67, 12045 Berlin)";
   } else {
-    locationText = "Abholung in: " + strasse + ", " + plz;
+    locationText = "(Abholung)" + strasse + ", " + plz;
   }
 
   const dateText = now.toLocaleDateString('de-DE');
@@ -293,6 +293,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
