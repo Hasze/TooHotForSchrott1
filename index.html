@@ -45,11 +45,11 @@
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Wie möchten Sie spenden?</label>
                         <div class="grid grid-cols-2 gap-4">
                             <label class="flex items-center justify-center p-3 border-2 rounded-xl cursor-pointer hover:bg-emerald-50 transition border-emerald-500 bg-emerald-50" id="label-office">
-                                <input type="radio" name="type" value="office" class="hidden" checked onchange="pruefeAbholung()">
+                                <input type="radio" name="spendenart" value="office" class="hidden" checked onchange="pruefeAbholung()">
                                 <span class="text-sm font-medium">Geschäftsstelle</span>
                             </label>
                             <label class="flex items-center justify-center p-3 border-2 rounded-xl cursor-pointer hover:bg-emerald-50 transition border-gray-200" id="label-pickup">
-                                <input type="radio" name="type" value="pickup" class="hidden" onchange="pruefeAbholung()">
+                                <input type="radio" name="spendenart" value="pickup" class="hidden" onchange="pruefeAbholung()">
                                 <span class="text-sm font-medium">Abholung</span>
                             </label>
                         </div>
@@ -218,7 +218,7 @@
         }
 
 function pruefeAbholung() {
-    var istAbholung = document.querySelector('input[name="type"]:checked').value === 'pickup';
+    var istAbholung = document.querySelector('input[name="spendenart"]:checked').value === 'pickup';
     var abholAdresseBox = document.getElementById('abholAdresseBox');
     var labelAbholung = document.getElementById('label-pickup');
     var labelGeschaeftsstelle = document.getElementById('label-office');
@@ -234,7 +234,7 @@ function pruefeAbholung() {
     }
 }
      function spendeRegistrieren() {
-  const spendenart = document.querySelector('input[name="type"]:checked').value;
+  const spendenart = document.querySelector('input[name="spendenart"]:checked').value;
   const kleidung = document.getElementById('kleidung').value.trim();
   const krisengebiet = document.getElementById('krisengebiet-select').value;
   const plz = document.getElementById('plz').value.trim();
@@ -293,3 +293,4 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
