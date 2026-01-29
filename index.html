@@ -234,7 +234,7 @@ function pruefeAbholung() {
     }
 }
      function spendeRegistrieren() {
-  const typeValue = document.querySelector('input[name="type"]:checked').value;
+  const spendenart = document.querySelector('input[name="type"]:checked').value;
   const clothes = document.getElementById('clothes').value.trim();
   const crisis = document.getElementById('crisis-select').value;
   const plz = document.getElementById('plz').value.trim();
@@ -245,7 +245,7 @@ function pruefeAbholung() {
     return;
   }
 
-  if (typeValue === 'pickup') {
+  if (spendenart === 'pickup') {
     if (!street) {
       alert("Bitte geben Sie Straße & Hausnummer an.");
       return;
@@ -271,7 +271,7 @@ function pruefeAbholung() {
   const now = new Date();
 
   let locationText = "";
-  if (typeValue === 'office') {
+  if (spendenart === 'office') {
     locationText = "Geschäftsstelle (Hilfsstraße 67, 12045 Berlin)";
   } else {
     locationText = "Abholung: " + street + ", " + plz;
@@ -293,6 +293,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
