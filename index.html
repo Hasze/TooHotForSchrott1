@@ -205,10 +205,11 @@
     </footer>
 
     <script>
-
+// Zentrale JavaScript-Logik zur Steuerung der Seitennavigation,
+// Formularanzeige, Validierung und Spendenbestätigung
         const GESCHAEFTSSTELLEN_PLZ = "12045";
         const GESCHAEFTSSTELLEN_PLZ_PREFIX = GESCHAEFTSSTELLEN_PLZ.substring(0, 2);
-
+// Wechselt zwischen den Hauptseiten (Spendenportal, Krisengebiete, Über uns)
         function seiteWechseln(pageId) {
             document.getElementById('portal-page').classList.add('hidden');
             document.getElementById('krisengebiet-page').classList.add('hidden');
@@ -216,7 +217,7 @@
             document.getElementById(pageId + '-page').classList.remove('hidden');
             window.scrollTo(0,0);
         }
-
+// Blendet die Abholadresse ein oder aus, abhängig von der gewählten Spendenart
 function pruefeAbholung() {
     var istAbholung = document.querySelector('input[name="spendenart"]:checked').value === 'abholung';
     var abholAdresseBox = document.getElementById('abholAdresseBox');
@@ -233,7 +234,8 @@ function pruefeAbholung() {
         labelGeschaeftsstelle.classList.add('border-emerald-500', 'bg-emerald-50');
     }
 }
-     function spendeRegistrieren() {
+// Validiert die Formulareingaben und zeigt nach erfolgreicher Prüfung eine Bestätigungsseite mit allen relevanten Spendendaten an
+function spendeRegistrieren() {
   const spendenart = document.querySelector('input[name="spendenart"]:checked').value;
   const kleidung = document.getElementById('kleidung').value.trim();
   const krisengebiet = document.getElementById('krisengebiet-select').value;
@@ -255,7 +257,7 @@ function pruefeAbholung() {
       alert("Bitte geben Sie eine gültige 5-stellige Postleitzahl ein (z.B. 12045).");
       return;
     }
-
+// Prüft, ob die Abholadresse im Einzugsgebiet der Geschäftsstelle liegt
     if (plz.substring(0, 2) !== GESCHAEFTSSTELLEN_PLZ_PREFIX) {
       alert(
         "Abholung nicht möglich: Die ersten beiden Ziffern der PLZ müssen mit der Geschäftsstelle übereinstimmen (" +
@@ -297,6 +299,7 @@ if (spendenart === 'geschaeftsstelle') {
     </script>
 </body>
 </html>
+
 
 
 
