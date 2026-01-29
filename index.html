@@ -34,13 +34,13 @@
     <main class="flex-grow container mx-auto px-4 py-10">
         
         <div id="portal-page">
-            <div id="form-card" class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div id="formularKarte" class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div class="bg-emerald-600 p-6 text-white text-center">
                     <h1 class="text-2xl font-bold">Kleiderspende registrieren</h1>
                     <p class="text-emerald-100 mt-1">Helfen Sie dort, wo es nötig ist.</p>
                 </div>
                 
-                <form id="donationForm" class="p-8 space-y-6">
+                <form id="spendenFormular" class="p-8 space-y-6">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Wie möchten Sie spenden?</label>
                         <div class="grid grid-cols-2 gap-4">
@@ -85,10 +85,10 @@
                 </form>
             </div>
 
-            <div id="success-card" class="hidden max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-10 text-center border-t-8 border-emerald-500">
+            <div id="erfolgsKarte" class="hidden max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-10 text-center border-t-8 border-emerald-500">
                 <h2 class="text-3xl font-bold text-gray-800 mb-2">Danke für die Spende!</h2>
                 <p class="text-gray-500 mb-8">Ihre Spende wurde erfolgreich übermittelt.</p>
-                <div id="result-details" class="bg-emerald-50 rounded-xl p-6 text-left space-y-3 border border-emerald-100"></div>
+                <div id="ergebnisDetails" class="bg-emerald-50 rounded-xl p-6 text-left space-y-3 border border-emerald-100"></div>
                 <button onclick="location.reload()" class="mt-8 text-emerald-600 font-semibold hover:text-emerald-800 border-none bg-transparent cursor-pointer">
                     &larr; Neue Spende starten
                 </button>
@@ -265,8 +265,8 @@ function pruefeAbholung() {
     }
   }
 
-  document.getElementById('form-card').classList.add('hidden');
-  document.getElementById('success-card').classList.remove('hidden');
+  document.getElementById('formularKarte').classList.add('hidden');
+  document.getElementById('erfolgsKarte').classList.remove('hidden');
 
   const now = new Date();
 
@@ -283,7 +283,7 @@ function pruefeAbholung() {
     minute: '2-digit'
   });
 
-  document.getElementById('result-details').innerHTML =
+  document.getElementById('ergebnisDetails').innerHTML =
     '<p><strong>Art der Kleider:</strong> ' + kleidung + '</p>' +
     '<p><strong>Ziel-Region:</strong> ' + krisengebiet + '</p>' +
     '<p><strong>Ort:</strong> ' + locationText + '</p>' +
@@ -293,6 +293,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
