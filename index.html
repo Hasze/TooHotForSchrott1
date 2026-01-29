@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div id="addressBox" class="hidden space-y-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <div id="abholAdresseBox" class="hidden space-y-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
                         <p class="text-xs font-bold text-emerald-700 uppercase">Abholadresse</p>
                         <input type="text" id="strasse" placeholder="Straße & Hausnummer" class="w-full border-gray-300 rounded-lg p-2.5 border">
                         <input type="text" id="plz" placeholder="Postleitzahl (z.B. 12345)" class="w-full border-gray-300 rounded-lg p-2.5 border">
@@ -218,19 +218,19 @@
         }
 
 function pruefeAbholung() {
-    var isPickup = document.querySelector('input[name="type"]:checked').value === 'pickup';
-    var addressBox = document.getElementById('addressBox');
-    var labelPickup = document.getElementById('label-pickup');
-    var labelOffice = document.getElementById('label-office');
+    var istAbholung = document.querySelector('input[name="type"]:checked').value === 'pickup';
+    var abholAdresseBox = document.getElementById('abholAdresseBox');
+    var labelAbholung = document.getElementById('label-pickup');
+    var labelGeschaeftsstelle = document.getElementById('label-office');
 
-    if (isPickup) {
-        addressBox.classList.remove('hidden');
-        labelPickup.classList.add('border-emerald-500', 'bg-emerald-50');
-        labelOffice.classList.remove('border-emerald-500', 'bg-emerald-50');
+    if (istAbholung) {
+        abholAdresseBox.classList.remove('hidden');
+        labelAbholung.classList.add('border-emerald-500', 'bg-emerald-50');
+        labelGeschaeftsstelle.classList.remove('border-emerald-500', 'bg-emerald-50');
     } else {
-        addressBox.classList.add('hidden');
-        labelPickup.classList.remove('border-emerald-500', 'bg-emerald-50');
-        labelOffice.classList.add('border-emerald-500', 'bg-emerald-50');
+        abholAdresseBox.classList.add('hidden');
+        labelAbholung.classList.remove('border-emerald-500', 'bg-emerald-50');
+        labelGeschaeftsstelle.classList.add('border-emerald-500', 'bg-emerald-50');
     }
 }
      function spendeRegistrieren() {
@@ -293,6 +293,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
