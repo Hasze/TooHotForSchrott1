@@ -48,7 +48,7 @@
                                 <input type="radio" name="spendenart" value="geschaeftsstelle" class="hidden" checked onchange="pruefeAbholung()">
                                 <span class="text-sm font-medium">Geschäftsstelle</span>
                             </label>
-                            <label class="flex items-center justify-center p-3 border-2 rounded-xl cursor-pointer hover:bg-emerald-50 transition border-gray-200" id="label-pickup">
+                            <label class="flex items-center justify-center p-3 border-2 rounded-xl cursor-pointer hover:bg-emerald-50 transition border-gray-200" id="label-abholung">
                                 <input type="radio" name="spendenart" value="abholung" class="hidden" onchange="pruefeAbholung()">
                                 <span class="text-sm font-medium">Abholung</span>
                             </label>
@@ -218,9 +218,9 @@
         }
 
 function pruefeAbholung() {
-    var istAbholung = document.querySelector('input[name="spendenart"]:checked').value === 'pickup';
+    var istAbholung = document.querySelector('input[name="spendenart"]:checked').value === 'abholung';
     var abholAdresseBox = document.getElementById('abholAdresseBox');
-    var labelAbholung = document.getElementById('label-pickup');
+    var labelAbholung = document.getElementById('label-abholung');
     var labelGeschaeftsstelle = document.getElementById('label-office');
 
     if (istAbholung) {
@@ -245,7 +245,7 @@ function pruefeAbholung() {
     return;
   }
 
-  if (spendenart === 'pickup') {
+  if (spendenart === 'abholung') {
     if (!strasse) {
       alert("Bitte geben Sie Straße & Hausnummer an.");
       return;
@@ -293,6 +293,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
