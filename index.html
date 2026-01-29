@@ -24,7 +24,7 @@
             <nav>
                 <ul class="flex flex-col items-end space-y-1 md:flex-row md:space-y-0 md:space-x-6 text-sm font-medium">
                     <li><a href="#" onclick="seiteWechseln('portal')" class="hover:text-emerald-200 transition block py-1 text-white no-underline">Spendenportal</a></li>
-                    <li><a href="#" onclick="seiteWechseln('crisis')" class="hover:text-emerald-200 transition block py-1 text-white no-underline">Krisengebiete</a></li>
+                    <li><a href="#" onclick="seiteWechseln('krisengebiet')" class="hover:text-emerald-200 transition block py-1 text-white no-underline">Krisengebiete</a></li>
                     <li><a href="#" onclick="seiteWechseln('about')" class="hover:text-emerald-200 transition block py-1 text-white no-underline">Über uns</a></li>
                 </ul>
             </nav>
@@ -57,19 +57,19 @@
 
                     <div id="addressBox" class="hidden space-y-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
                         <p class="text-xs font-bold text-emerald-700 uppercase">Abholadresse</p>
-                        <input type="text" id="street" placeholder="Straße & Hausnummer" class="w-full border-gray-300 rounded-lg p-2.5 border">
+                        <input type="text" id="strasse" placeholder="Straße & Hausnummer" class="w-full border-gray-300 rounded-lg p-2.5 border">
                         <input type="text" id="plz" placeholder="Postleitzahl (z.B. 12345)" class="w-full border-gray-300 rounded-lg p-2.5 border">
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-1">Was wird gespendet?</label>
-                            <input type="text" id="clothes" placeholder="z.B. 10 Winterjacken" class="w-full border-gray-300 rounded-lg p-2.5 border">
+                            <input type="text" id="kleidung" placeholder="z.B. 10 Winterjacken" class="w-full border-gray-300 rounded-lg p-2.5 border">
                         </div>
 
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-1">Krisengebiet wählen</label>
-                            <select id="crisis-select" class="w-full border-gray-300 rounded-lg p-2.5 border">
+                            <select id="krisengebiet-select" class="w-full border-gray-300 rounded-lg p-2.5 border">
                                 <option>Deutschland, Berlin (Stromausfallhilfe)</option>
                                 <option>Kosovo (Überschwemmungshilfe)</option>
                                 <option>Nordsyrien (Erdbebenhilfe)</option>
@@ -95,7 +95,7 @@
             </div>
         </div>
 
-        <div id="crisis-page" class="hidden">
+        <div id="krisengebiet-page" class="hidden">
             <h2 class="text-3xl font-bold text-center mb-10 text-emerald-800">Unsere aktuellen Einsatzgebiete</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -211,7 +211,7 @@
 
         function seiteWechseln(pageId) {
             document.getElementById('portal-page').classList.add('hidden');
-            document.getElementById('crisis-page').classList.add('hidden');
+            document.getElementById('krisengebiet-page').classList.add('hidden');
             document.getElementById('about-page').classList.add('hidden');
             document.getElementById(pageId + '-page').classList.remove('hidden');
             window.scrollTo(0,0);
@@ -235,18 +235,18 @@ function pruefeAbholung() {
 }
      function spendeRegistrieren() {
   const spendenart = document.querySelector('input[name="type"]:checked').value;
-  const clothes = document.getElementById('clothes').value.trim();
-  const crisis = document.getElementById('crisis-select').value;
+  const kleidung = document.getElementById('kleidung').value.trim();
+  const krisengebiet = document.getElementById('krisengebiet-select').value;
   const plz = document.getElementById('plz').value.trim();
-  const street = document.getElementById('street').value.trim();
+  const strasse = document.getElementById('strasse').value.trim();
 
-  if (!clothes) {
+  if (!kleidung) {
     alert("Bitte geben Sie die Art der Kleidung an.");
     return;
   }
 
   if (spendenart === 'pickup') {
-    if (!street) {
+    if (!strasse) {
       alert("Bitte geben Sie Straße & Hausnummer an.");
       return;
     }
@@ -274,7 +274,7 @@ function pruefeAbholung() {
   if (spendenart === 'office') {
     locationText = "Geschäftsstelle (Hilfsstraße 67, 12045 Berlin)";
   } else {
-    locationText = "Abholung: " + street + ", " + plz;
+    locationText = "Abholung: " + strasse + ", " + plz;
   }
 
   const dateText = now.toLocaleDateString('de-DE');
@@ -284,8 +284,8 @@ function pruefeAbholung() {
   });
 
   document.getElementById('result-details').innerHTML =
-    '<p><strong>Art der Kleider:</strong> ' + clothes + '</p>' +
-    '<p><strong>Ziel-Region:</strong> ' + crisis + '</p>' +
+    '<p><strong>Art der Kleider:</strong> ' + kleidung + '</p>' +
+    '<p><strong>Ziel-Region:</strong> ' + krisengebiet + '</p>' +
     '<p><strong>Ort:</strong> ' + locationText + '</p>' +
     '<p><strong>Datum:</strong> ' + dateText + '</p>' +
     '<p><strong>Uhrzeit:</strong> ' + timeText + ' Uhr</p>';
@@ -293,6 +293,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
