@@ -206,8 +206,8 @@
 
     <script>
 
-        const OFFICE_PLZ = "12045";
-        const OFFICE_PLZ_PREFIX = OFFICE_PLZ.substring(0, 2);
+        const GESCHAEFTSSTELLEN_PLZ = "12045";
+        const GESCHAEFTSSTELLEN_PLZ_PREFIX = GESCHAEFTSSTELLEN_PLZ.substring(0, 2);
 
         function seiteWechseln(pageId) {
             document.getElementById('portal-page').classList.add('hidden');
@@ -256,10 +256,10 @@ function pruefeAbholung() {
       return;
     }
 
-    if (plz.substring(0, 2) !== OFFICE_PLZ_PREFIX) {
+    if (plz.substring(0, 2) !== GESCHAEFTSSTELLEN_PLZ_PREFIX) {
       alert(
         "Abholung nicht möglich: Die ersten beiden Ziffern der PLZ müssen mit der Geschäftsstelle übereinstimmen (" +
-        OFFICE_PLZ_PREFIX + "xxx)."
+        GESCHAEFTSSTELLEN_PLZ_PREFIX + "xxx)."
       );
       return;
     }
@@ -293,6 +293,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
