@@ -270,13 +270,16 @@ function pruefeAbholung() {
 
   const now = new Date();
 
-  let locationText = "";
-  if (spendenart === 'geschaeftsstelle') {
-    locationText = "Geschäftsstelle (Hilfsstraße 67, 12045 Berlin)";
-  } else {
-    locationText = "(Abholung) " + strasse + ", " + plz;
-  }
+ let uebergabeartText = "";
+let ortText = "";
 
+if (spendenart === 'geschaeftsstelle') {
+  uebergabeartText = "Übergabe an der Geschäftsstelle";
+  ortText = "Hilfsstraße 67, 12045 Berlin";
+} else {
+  uebergabeartText = "Abholung durch Sammelfahrzeug";
+  ortText = strasse + ", " + plz;
+}
   const dateText = now.toLocaleDateString('de-DE');
   const timeText = now.toLocaleTimeString('de-DE', {
     hour: '2-digit',
@@ -293,6 +296,7 @@ function pruefeAbholung() {
     </script>
 </body>
 </html>
+
 
 
 
